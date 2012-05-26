@@ -1,0 +1,9 @@
+req = context.createRequest("active:xpath")
+xpath = "string(/RUName)"
+req.addArgumentByValue("operator",xpath)
+req.addArgument("operand","res:/resources/xml/RuName.xml")
+
+rep = context.issueRequest(req)
+
+context.createResponseFrom(rep)
+

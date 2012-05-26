@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soapenv:Header>
+    <RequesterCredentials soapenv:mustUnderstand="0" xmlns="urn:ebay:apis:eBLBaseComponents">
+    <eBayAuthToken>AgAAAA**AQAAAA**aAAAAA**hEKETw**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wFk4CoD5eKpQydj6x9nY+seQ**kckBAA**AAMAAA**0IPivtliP11pjKwQfJIghZH7FtRThbfaFtz0Pfr/OFJNXLmzJPzoTTaLd4UkCDz81fIT5rUxh9mRbVjJLDHFIMi/Yy0T5CvMAY7cJtUxvfVpax/1D+1KPts60nT7h6uI0LpYuJrw6NpkR49e8zMmNDWdyHERzDWInoHsAFL1q8Sncqraj2JOwLeqlqLgoGeWV9LQcP0l+zm3jceDLPLRbK/af6HKbXrR/ppkk6Vvt5iyL4DCC6bz7++gs2GvuZzc0PWQipXPWkD3qAL6uR/BIVdPC+3L6skQnP9HEo3SwqQWaGaQJe4a8QSiNLotQhfdu9fe+7ookfctxupr3u8wwQkl7UHW4JHrlHIkdkHtWRHEAjbRh9LFBQKHHJ64ysDDujSlwX66jiYKshC042KEILx8nAq96IXWyUYhxFpvkvRc45Idk8IVZ6BPOUurcXOBTLMIlG62zjsBXTU8k7/mrth+49mjjrY6MottfIRuuqkEFSEzqZvTcTUdCtt+ZNpSt/ktvfZYyt0cwgDeR/u6YwDqxHqxXs7G6Wzs7k3bFhecbCj7cl98SCmUSpGNSNCxkOTH8W588KTGTxDpOavgfVs7l2yR2939RbS5mZ3SZWVXUh4pGmJKg/tJqQ7egwP3xCJARUAj0tdgUaUBP1tQW9LeaVNajlpvLLQIx70sK3C+NiAapl2g4zzzOPdFUOcAR2K5m14QJzkfs6l40jXiQl+wIB9q9JmcQMAR8mJhEdb45IH7KnMQoC9qjEKOthMz</eBayAuthToken>
+      <ebl:Credentials xmlns:ebl="urn:ebay:apis:eBLBaseComponents">
+        <ebl:DevId>57308ff4-3148-43e2-900c-7fe786d0b5dd</ebl:DevId>
+        <ebl:AppId>Cognizan-6f9d-488c-b526-5ca13e498447</ebl:AppId>
+        <ebl:AuthCert>b0f6d87e-6d27-49bd-abb4-300fd0dc653e</ebl:AuthCert>
+      </ebl:Credentials>
+    </RequesterCredentials>
+  </soapenv:Header>
+  <soapenv:Body>
+    <GeteBayOfficialTimeRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+      <Version>547</Version>
+    </GeteBayOfficialTimeRequest>
+  </soapenv:Body>
+</soapenv:Envelope>

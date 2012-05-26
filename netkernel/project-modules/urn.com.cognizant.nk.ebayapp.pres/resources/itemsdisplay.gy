@@ -1,0 +1,8 @@
+rep=null;
+	params=context.source("httpRequest:/params");
+	
+	
+
+	req = context.createRequest("res:/ebay/data/items/category/test")
+	req.addArgument("","")
+	

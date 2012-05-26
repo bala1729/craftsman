@@ -1,0 +1,121 @@
+<module version="2.0">
+	<meta>
+		<identity>
+			<uri>urn:com:cognizant:nk:ebayapp:pres</uri>
+			<version>1.0.0</version>
+		</identity>
+		<info>
+			<name>eBay App on netkernel</name>
+			<description>Demo of ebay app on netkernel.</description>
+		</info>
+	</meta>
+	<system>
+		<dynamic />
+	</system>
+	<rootspace>
+		<!-- Dynamic Import into the HTTP fulcrum -->
+		<fileset>
+			<regex>res:/etc/system/SimpleDynamicImportHook.xml</regex>
+		</fileset>
+		
+		<mapper>
+			<config>
+				<endpoint>
+					<grammar>res:/ebay/login</grammar>
+					<request>
+						<identifier>active:groovy</identifier>
+						<argument name="operator">res:/resources/scripts/ebaylogin.gy</argument>
+					</request>
+					<header name="mime">text/html</header>
+				</endpoint>
+				<endpoint>
+					<grammar>res:/ebay/pres/login</grammar>
+					<request>
+						<identifier>active:xrl2</identifier>
+						<argument name="template">res:/resources/xml/GlobalTemplate.xml</argument>
+						<argument name="content">res:/resources/xml/LoginPageContent.xml</argument>
+					</request>
+					<header name="mime">text/html</header>
+				</endpoint>
+				<endpoint>
+					<grammar>res:/ebay/pres/landingpage</grammar>
+					<request>
+						<identifier>active:xrl2</identifier>
+						<argument name="template">res:/resources/xml/GlobalTemplate.xml</argument>
+						<argument name="content">res:/resources/xml/LandingPageContent.xml</argument>
+					</request>
+					<header name="mime">text/html</header>
+				</endpoint>
+				<endpoint>
+					<grammar>res:/ebay/pres/leftnav.html</grammar>
+					<request>
+						<identifier>active:xslt</identifier>
+						<argument name="operator">res:/resources/xml/leftnav.xsl</argument>
+						<argument name="operand">res:/resources/xml/CategoriesMock.xml</argument>
+					</request>
+					<header name="mime">text/html</header>
+				</endpoint>
+				<endpoint>
+					<grammar>res:/ebay/pres/categories</grammar>
+					
+					
+					<request>
+						<identifier>active:xslt</identifier>
+						<argument name="operator">res:/resources/xml/final.xsl</argument>
+						<argument name="operand">res:/resources/xml/required.xml</argument> 
+					</request>
+					<header name="mime">text/html</header>
+				</endpoint>
+				
+				<endpoint>
+					<grammar>res:/ebay/pres/final</grammar>
+					
+					
+					<request>
+						<identifier>active:xrl2</identifier>
+						<argument name="template">res:/resources/xml/GlobalTemplate.xml</argument>
+						<argument name="content">res:/resources/xml/final.xml</argument> 
+					</request>
+					<header name="mime">text/xml</header>
+				</endpoint>
+				<endpoint>
+					<grammar>res:/ebay/pres/temp/items.html</grammar>
+					
+					
+					<request>
+						<identifier>res:/ebay/pres/categories</identifier>
+						</request>
+						
+				</endpoint>			
+			</config>
+			<space>
+				<fileset>
+					<private />
+					<regex>res:/resources/.*</regex>
+				</fileset>
+				<import>
+					<uri>urn:com:cognizant:nk:ebayapp:transform</uri>
+				</import>
+				<import>
+					<uri>urn:org:netkernel:client:http</uri>
+				</import>				
+				<import>
+					<uri>urn:org:netkernel:lang:groovy</uri>
+				</import>
+				<import>
+					<uri>urn:org:netkernel:ext:layer1</uri>
+				</import>
+				<import>
+					<uri>urn:org:netkernel:lang:xrl</uri>
+				</import>
+				<import>
+					<uri>urn:org:netkernel:xml:core</uri>
+				</import>
+				
+				<fileset>
+					<glob>etc/*</glob>
+				</fileset>
+			</space>
+		</mapper>
+	</rootspace>
+</module>

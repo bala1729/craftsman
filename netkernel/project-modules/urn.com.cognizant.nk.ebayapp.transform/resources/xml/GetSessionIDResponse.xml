@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"> 
+	<soapenv:Body>
+      <GetSessionIDResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+         <Timestamp>2012-04-15T02:27:55.118Z</Timestamp>
+         <Ack>Success</Ack>
+         <Version>767</Version>
+         <Build>E767_CORE_BUNDLED_14738705_R1</Build>
+         <SessionID>kckBAA**b3d3f85e1360a471d211e791fffffef3</SessionID>
+      </GetSessionIDResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,72 @@
+<module version="2.0">
+	<meta>
+		<identity>
+			<uri>urn:com:cognizant:nk:ebayapp:data</uri>
+			<version>1.0.0</version>
+		</identity>
+		<info>
+			<name>eBay Data layer on netkernel</name>
+			<description>Demo of ebay data layer on netkernel.</description>
+		</info>
+	</meta>
+	<system>
+		<dynamic />
+	</system>
+	<rootspace public="true">
+	<!-- <accessor>
+    <grammar>res:/ebay/data/items/category
+      <regex type="anything" />
+    </grammar>
+    <class>com.cognizant.nk.ebayapp.data.api.ItemsByCategorySearch</class>
+  	</accessor>
+	<import>
+		<uri>urn:org:netkernel:client:http</uri>
+	</import> -->
+		<mapper>
+			<config>
+				<endpoint>
+					<grammar>res:/ebay/data/getsessionid</grammar>
+					<request>
+						<identifier>active:groovy</identifier>
+						<argument name="operator">res:/resources/data/scripts/getsessionid.gy</argument>
+					</request>
+				</endpoint>		
+				<endpoint>
+					<grammar>res:/ebay/data/categories</grammar>
+					<request>
+						<identifier>active:groovy</identifier>
+						<argument name="operator">res:/resources/data/scripts/categorypull.gy</argument>
+					</request>
+				</endpoint>
+				<endpoint>
+					<grammar>res:/ebay/data/items/category</grammar>
+					<request>
+						<identifier>active:groovy</identifier>
+						<argument name="operator">res:/resources/data/scripts/findItemsByCategory.gy</argument>
+					</request>
+				</endpoint>
+			</config>
+			<space>
+				<fileset>
+					<private />
+					<regex>res:/resources/.*</regex>
+				</fileset>
+				
+				<import>
+					<uri>urn:org:netkernel:client:http</uri>
+				</import>
+				<import>
+					<uri>urn:org:netkernel:soap:core</uri>
+				</import>
+				<import>
+					<uri>urn:org:netkernel:lang:groovy</uri>
+				</import>
+				
+				<import>
+					<uri>urn:org:netkernel:ext:layer1</uri>
+				</import>
+				
+			</space>
+		</mapper>
+	</rootspace>
+</module>

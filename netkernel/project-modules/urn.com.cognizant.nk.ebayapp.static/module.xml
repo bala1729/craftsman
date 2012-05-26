@@ -1,0 +1,25 @@
+<module version="2.0">
+	<meta>
+		<identity>
+			<uri>urn:com:cognizant:nk:ebayapp:static</uri>
+			<version>1.0.0</version>
+		</identity>
+		<info>
+			<name>eBay Static</name>
+			<description>Static resources such as images</description>
+		</info>
+	</meta>
+	<system>
+		<dynamic />
+	</system>
+	<rootspace uri="urn:org:netkernel:tutorial:basics:part1" public="true">
+  <fileset>
+    <glob>ebay/static/images/*</glob>
+  </fileset>
+  <import>
+    <uri>urn:org:netkernel:tutorial:basics:dynamic-import-impl</uri>
+  </import>
+</rootspace>
+
+	
+</module>

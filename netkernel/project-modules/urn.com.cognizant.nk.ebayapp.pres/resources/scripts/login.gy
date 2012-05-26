@@ -1,0 +1,27 @@
+req = context.createRequest("res:/ebay/service/getruname")
+
+runame = context.issueRequest(req)
+
+req = context.createRequest("res:/ebay/service/getsessionid")
+
+sessionid = context.issueRequest(req)
+
+context.sink("session:sessionId", sessionId)
+
+loginurl = "https://signin.sandbox.ebay.com/ws/eBayISAPI.dll?SignIn&runame="+runame+"&SessID="+sessionid
+
+println(loginurl)
+
+req=context.createRequest("active:httpGet")
+req.addArgument("url",loginurl)
+
+rep=context.issueRequest(req)
+
+sid = context.source("session:sessionId")
+
+println("session id : "+sid)
+
+//rep = context.sourceForResponse(loginurl)
+
+rep = context.createResponseFrom(rep)
+

@@ -1,0 +1,14 @@
+req = context.createRequest("active:wsSOAPClient")
+	
+	req.addArgument("message", "res:/resources/xml/GetCategoriesSoapRequest.xml");
+	
+      req.addArgument("endpoint", "https://api.sandbox.ebay.com/wsapi?appid=Cognizan-6f9d-488c-b526-5ca13e498447&version=547&callname=GetCategories&siteid=0&Routing=default");
+
+	req.addArgument("action", "")
+	
+	rep=context.issueRequest(req)
+	
+	
+	
+	rep = context.createResponseFrom(rep)
+	rep.setMimeType("application/xml")

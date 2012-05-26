@@ -1,0 +1,17 @@
+req = context.createRequest("active:wsSOAPClient")
+	
+	req.addArgument("message", "res:/resources/data/xml/GetSessionIdRequest.xml")
+	
+    req.addArgument("endpoint", "https://api.sandbox.ebay.com/wsapi?appid=Cognizan-6f9d-488c-b526-5ca13e498447&version=547&callname=GetSessionID&siteid=0&Routing=default");
+
+	req.addArgument("action", "")
+
+	//req.addArgument("config","res:/resources/data/xml/HttpConfig.xml")
+	
+	rep=context.issueRequest(req)
+	
+	
+	
+	rep = context.createResponseFrom(rep)
+	rep.setMimeType("text/xml")
+

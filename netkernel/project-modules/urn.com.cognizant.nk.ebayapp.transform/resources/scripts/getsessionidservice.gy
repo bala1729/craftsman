@@ -1,0 +1,8 @@
+req = context.createRequest("active:xpath")
+xpath = "string(/SessionID)"
+req.addArgumentByValue("operator",xpath)
+req.addArgument("operand","res:/ebay/transform/getsessionid")
+
+rep = context.issueRequest(req)
+
+context.createResponseFrom(rep)

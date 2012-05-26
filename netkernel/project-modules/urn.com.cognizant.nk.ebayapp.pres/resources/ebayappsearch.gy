@@ -1,0 +1,22 @@
+import java.lang.*
+
+	rep=null;
+	params=context.source("httpRequest:/params");
+	
+	// Make a soap call to ebay api
+	
+
+	req = context.createRequest("active:wsSOAPClient")
+	
+	req.addArgument("message", "res:/resources/xml/eBayTimeRequest.xml");
+	//req.addArgument("endpoint", "https://api.sandbox.ebay.com/ws/api.dll");
+      req.addArgument("endpoint", "https://api.sandbox.ebay.com/wsapi?appid=Cognizan-6f9d-488c-b526-5ca13e498447&version=547&callname=GeteBayOfficialTime&siteid=0&Routing=default");
+
+	req.addArgument("action", "")
+	//req.setRepresentationClass(String.class)
+	rep=context.issueRequest(req)
+	
+	
+	
+	rep = context.createResponseFrom(rep)
+	rep.setMimeType("application/xml")

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns:xrl="http://netkernel.org/xrl">
+	<header>
+		<xrl:include identifier="res:/resources/styles/globalstyle.xml"/>
+		<xrl:include identifier="res:/resources/styles/headerstyle.xml"/>		
+	</header>
+	<body>
+		<xrl:include identifier="res:/resources/xml/Header.xml"/>
+	</body>
+</html>

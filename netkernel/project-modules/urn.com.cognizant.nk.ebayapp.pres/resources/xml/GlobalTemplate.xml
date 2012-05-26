@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns:xrl="http://netkernel.org/xrl">
+	<head>
+		<xrl:include identifier="res:/resources/styles/globalstyle.xml"/>
+		<xrl:include identifier="res:/resources/styles/headerstyle.xml"/>		
+		<xrl:include identifier="res:/resources/styles/contentstyle.xml"/>
+		<xrl:include identifier="res:/resources/styles/footerstyle.xml"/>
+	</head>
+	<body>
+		<div id="global">
+		<xrl:include identifier="res:/resources/xml/Header.xml"/>
+		<xrl:include identifier="res:/resources/xml/ContentTemplate.xml"/>
+		<xrl:include identifier="res:/resources/xml/Footer.xml"/>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,3 @@
+<div id="content" xmlns:xrl="http://netkernel.org/xrl">
+	<xrl:include identifier="arg:content"/>
+</div>

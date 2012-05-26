@@ -1,0 +1,19 @@
+<div id="loginpage" xmlns:xrl="http://netkernel.org/xrl">
+	<xrl:include identifier="res:/resources/styles/loginpagestyle.xml"/>
+	<h2>Login Page</h2>
+	<form action="" method="post">
+		<div align="center">
+		<p>
+			<label for="userid">User Name: </label>
+			<input type="text" name="userid" id="userid"/>
+		</p>
+		<p>
+			<label for="pwd">Password: </label>
+			<input type="password" name="pwd" id="pwd"/>
+		</p>
+		<p>
+			<input type="submit" value="Login" onclick="submit();"/>
+		</p>
+		</div>
+	</form>
+</div>
