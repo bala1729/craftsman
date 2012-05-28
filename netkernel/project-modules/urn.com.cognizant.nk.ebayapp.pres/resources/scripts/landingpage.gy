@@ -1,0 +1,10 @@
+
+
+req = context.createRequest("active:xrl2")
+
+req.addArgument("template", "res:/resources/xml/GlobalTemplate.xml")
+req.addArgument("content", "res:/resources/xml/LandingPageContent.xml")
+
+rep = context.issueRequest(req)
+
+rep = context.createResponseFrom(rep)

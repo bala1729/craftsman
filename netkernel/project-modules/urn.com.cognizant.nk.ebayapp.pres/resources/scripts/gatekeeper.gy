@@ -1,0 +1,33 @@
+println(" ************** Thru the Gatekeeper **************")
+
+outerRequest=context.source("arg:request");
+println(" outer request "+outerRequest.getIdentifier())
+
+username = context.source("httpRequest:/param/username")
+println(" username "+username)
+
+sessionid = context.source("session:id")
+
+if (sessionid!=null && username!=null) {
+ // coming thru the login, sink the login as true in session
+ context.sink("session:login", "true")
+
+}
+
+innerRequest=null
+bypassValidation = false
+
+if (outerRequest.getIdentifier().equals("res:/ebay/login")) {
+	bypassValidation = true
+}
+
+if (bypassValidation) {
+	innerRequest = outerRequest.getIssuableClone();
+} else if (context.exists("session:login")) {
+	innerRequest=outerRequest.getIssuableClone();
+} else {
+	//Not logged in?
+	innerRequest=context.createRequest("res:/ebay/login");		//Route them to the login resource	
+}
+
+context.createResponseFrom(innerRequest);

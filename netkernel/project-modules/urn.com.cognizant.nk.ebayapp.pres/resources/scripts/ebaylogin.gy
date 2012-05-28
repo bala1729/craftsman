@@ -6,7 +6,15 @@ req = context.createRequest("res:/ebay/service/getsessionid")
 
 sessionid = context.issueRequest(req)
 
-//context.sink("session:mId", sessionId)
+context.sink("session:id", sessionid)
+
+host = context.source("httpRequest:/remote-host")
+
+println("***** host ***** "+host)
+
+c = context.source("httpRequest:/cookie/ebay")
+
+println("ebay cookie "+c)
 
 loginurl = "https://signin.sandbox.ebay.com/ws/eBayISAPI.dll?SignIn&runame="+runame+"&SessID="+sessionid
 
@@ -15,15 +23,7 @@ println(loginurl)
 req=context.createRequest("active:httpGet")
 req.addArgument("url",loginurl)
 
-//context.sink("httpResponse:/redirect", loginurl);
-
 rep=context.issueRequest(req)
-
-//sid = context.source("session:mId")
-
-//println("session id : "+sid)
-
-//rep = context.sourceForResponse(loginurl)
 
 rep = context.createResponseFrom(rep)
 

@@ -12,12 +12,71 @@
 	<system>
 		<dynamic />
 	</system>
-	<rootspace>
-		<!-- Dynamic Import into the HTTP fulcrum -->
+	<rootspace name="Public App" public="true">
 		<fileset>
 			<regex>res:/etc/system/SimpleDynamicImportHook.xml</regex>
 		</fileset>
-		
+		<!-- <mapper>
+			<config>
+				<endpoint>
+					<grammar>res:/ebay/login</grammar>
+					<request>
+						<identifier>active:ebaylogin</identifier>
+					</request>
+				</endpoint>
+				<endpoint>
+					<grammar>res:/ebay/pres/landingpage</grammar>
+					<request>
+						<identifier>active:landingpage</identifier>
+					</request>
+				</endpoint>				
+			</config>
+			<space name="Ebay App - Public Space">
+				<import>
+					<uri>urn:com:cognizant:nk:ebayapp:core</uri>
+				</import>
+			</space>
+		</mapper>  -->
+		<overlay>
+			<prototype>HTTPSession</prototype>
+			<config>
+				<maxSessions>100</maxSessions>
+				<minDuration>1200000</minDuration>
+				<maxDuration>1200000</maxDuration>
+			</config>
+			<space name="Ebay App - HTTP Session Overlay">
+				<pluggable-overlay>
+					<preProcess>
+						<identifier>active:GateKeeper</identifier>
+						<argument name="request">arg:request</argument>
+					</preProcess>
+					<space name="Ebay App - Protected Space">
+						<import>
+							<uri>urn:com:cognizant:nk:ebayapp:security:impl</uri>
+						</import>
+						<import>
+							<uri>urn:com:cognizant:nk:ebayapp:core</uri>
+						</import>
+					</space>
+				</pluggable-overlay>
+			</space>
+		</overlay>
+		<import>
+			<private />
+			<uri>urn:com:cognizant:nk:ebayapp:common</uri>
+		</import>
+	</rootspace>
+	<rootspace name="Ebay App Core" uri="urn:com:cognizant:nk:ebayapp:core" public="true">
+		<!-- Dynamic Import into the HTTP fulcrum 
+		<fileset>
+			<regex>res:/etc/system/SimpleDynamicImportHook.xml</regex>
+		</fileset> -->
+		<overlay>
+		<prototype>RESTOverlay</prototype>
+		<config>
+			<basepath>/ebay/</basepath>
+		</config>
+		<space name="Inside Ebay App Core Space">
 		<mapper>
 			<config>
 				<endpoint>
@@ -29,15 +88,14 @@
 					<header name="mime">text/html</header>
 				</endpoint>
 				<endpoint>
-					<grammar>res:/ebay/pres/login</grammar>
+					<grammar>res:/ebay/pres/landingpage</grammar>
 					<request>
-						<identifier>active:xrl2</identifier>
-						<argument name="template">res:/resources/xml/GlobalTemplate.xml</argument>
-						<argument name="content">res:/resources/xml/LoginPageContent.xml</argument>
+						<identifier>active:groovy</identifier>
+						<argument name="operator">res:/resources/scripts/landingpage.gy</argument>
 					</request>
 					<header name="mime">text/html</header>
 				</endpoint>
-				<endpoint>
+				<!-- <endpoint>
 					<grammar>res:/ebay/pres/landingpage</grammar>
 					<request>
 						<identifier>active:xrl2</identifier>
@@ -45,7 +103,7 @@
 						<argument name="content">res:/resources/xml/LandingPageContent.xml</argument>
 					</request>
 					<header name="mime">text/html</header>
-				</endpoint>
+				</endpoint>  -->
 				<endpoint>
 					<grammar>res:/ebay/pres/leftnav.html</grammar>
 					<request>
@@ -89,6 +147,46 @@
 				</endpoint>			
 			</config>
 			<space>
+				
+				<import>
+					<uri>urn:com:cognizant:nk:ebayapp:common</uri>
+				</import>				
+				
+			</space>
+		</mapper>
+		</space>
+		</overlay>
+		<import>
+			<private />
+			<uri>urn:com:cognizant:nk:ebayapp:common</uri>
+		</import>
+	</rootspace> 
+	<rootspace name="Ebay Authentication" uri="urn:com:cognizant:nk:ebayapp:security:impl" public="false">
+		<mapper>
+		<config>
+			<endpoint>
+				<name>GateKeeper Overlay</name>
+				<grammar>
+					<active>
+						<identifier>active:GateKeeper</identifier>
+						<argument name="request"/>
+					</active>
+				</grammar>
+				<request>
+					<identifier>active:groovy</identifier>
+					<argument name="operator">res:/resources/scripts/gatekeeper.gy</argument>
+					<argument name="request">arg:request</argument>
+				</request>
+			</endpoint>
+		</config>
+		<space>
+			<import>
+				<uri>urn:com:cognizant:nk:ebayapp:common</uri>
+			</import>
+		</space>
+		</mapper>
+	</rootspace>
+	<rootspace name="Ebay App Common" uri="urn:com:cognizant:nk:ebayapp:common" public="false">
 				<fileset>
 					<private />
 					<regex>res:/resources/.*</regex>
@@ -111,11 +209,11 @@
 				<import>
 					<uri>urn:org:netkernel:xml:core</uri>
 				</import>
-				
+				<import>
+					<uri>urn:org:netkernel:tpt:http</uri>
+				</import>				
 				<fileset>
 					<glob>etc/*</glob>
 				</fileset>
-			</space>
-		</mapper>
 	</rootspace>
 </module>
