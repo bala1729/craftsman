@@ -1,0 +1,7 @@
+context.delete("session:login")
+
+req=context.createRequest("res:/ebay/login")
+
+rep=context.issueRequest(req)
+
+rep = context.createResponseFrom(rep)

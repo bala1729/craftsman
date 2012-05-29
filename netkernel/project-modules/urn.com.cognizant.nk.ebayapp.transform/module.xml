@@ -25,6 +25,15 @@
 					<header name="mime">application/xml</header>
 				</endpoint>
 				<endpoint>
+					<grammar>res:/ebay/service/category/items</grammar>
+					<request>
+						<identifier>active:xslt</identifier>
+						<argument name="operator">res:/resources/xml/ItemTransform.xsl</argument>
+						<argument name="operand">res:/ebay/data/items/category</argument> 
+					</request>
+					<header name="mime">application/xml</header>
+				</endpoint>				
+				<endpoint>
 					<grammar>res:/ebay/service/getruname</grammar>
 					<request>
 						<identifier>active:groovy</identifier>

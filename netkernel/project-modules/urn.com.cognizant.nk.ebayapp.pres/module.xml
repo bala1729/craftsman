@@ -16,27 +16,6 @@
 		<fileset>
 			<regex>res:/etc/system/SimpleDynamicImportHook.xml</regex>
 		</fileset>
-		<!-- <mapper>
-			<config>
-				<endpoint>
-					<grammar>res:/ebay/login</grammar>
-					<request>
-						<identifier>active:ebaylogin</identifier>
-					</request>
-				</endpoint>
-				<endpoint>
-					<grammar>res:/ebay/pres/landingpage</grammar>
-					<request>
-						<identifier>active:landingpage</identifier>
-					</request>
-				</endpoint>				
-			</config>
-			<space name="Ebay App - Public Space">
-				<import>
-					<uri>urn:com:cognizant:nk:ebayapp:core</uri>
-				</import>
-			</space>
-		</mapper>  -->
 		<overlay>
 			<prototype>HTTPSession</prototype>
 			<config>
@@ -66,154 +45,152 @@
 			<uri>urn:com:cognizant:nk:ebayapp:common</uri>
 		</import>
 	</rootspace>
-	<rootspace name="Ebay App Core" uri="urn:com:cognizant:nk:ebayapp:core" public="true">
-		<!-- Dynamic Import into the HTTP fulcrum 
-		<fileset>
-			<regex>res:/etc/system/SimpleDynamicImportHook.xml</regex>
-		</fileset> -->
+	<rootspace name="Ebay App Core" uri="urn:com:cognizant:nk:ebayapp:core"
+		public="true">
 		<overlay>
-		<prototype>RESTOverlay</prototype>
-		<config>
-			<basepath>/ebay/</basepath>
-		</config>
-		<space name="Inside Ebay App Core Space">
-		<mapper>
+			<prototype>RESTOverlay</prototype>
 			<config>
-				<endpoint>
-					<grammar>res:/ebay/login</grammar>
-					<request>
-						<identifier>active:groovy</identifier>
-						<argument name="operator">res:/resources/scripts/ebaylogin.gy</argument>
-					</request>
-					<header name="mime">text/html</header>
-				</endpoint>
-				<endpoint>
-					<grammar>res:/ebay/pres/landingpage</grammar>
-					<request>
-						<identifier>active:groovy</identifier>
-						<argument name="operator">res:/resources/scripts/landingpage.gy</argument>
-					</request>
-					<header name="mime">text/html</header>
-				</endpoint>
-				<!-- <endpoint>
-					<grammar>res:/ebay/pres/landingpage</grammar>
-					<request>
-						<identifier>active:xrl2</identifier>
-						<argument name="template">res:/resources/xml/GlobalTemplate.xml</argument>
-						<argument name="content">res:/resources/xml/LandingPageContent.xml</argument>
-					</request>
-					<header name="mime">text/html</header>
-				</endpoint>  -->
-				<endpoint>
-					<grammar>res:/ebay/pres/leftnav.html</grammar>
-					<request>
-						<identifier>active:xslt</identifier>
-						<argument name="operator">res:/resources/xml/leftnav.xsl</argument>
-						<argument name="operand">res:/resources/xml/CategoriesMock.xml</argument>
-					</request>
-					<header name="mime">text/html</header>
-				</endpoint>
-				<endpoint>
-					<grammar>res:/ebay/pres/categories</grammar>
-					
-					
-					<request>
-						<identifier>active:xslt</identifier>
-						<argument name="operator">res:/resources/xml/final.xsl</argument>
-						<argument name="operand">res:/resources/xml/required.xml</argument> 
-					</request>
-					<header name="mime">text/html</header>
-				</endpoint>
-				
-				<endpoint>
-					<grammar>res:/ebay/pres/final</grammar>
-					
-					
-					<request>
-						<identifier>active:xrl2</identifier>
-						<argument name="template">res:/resources/xml/GlobalTemplate.xml</argument>
-						<argument name="content">res:/resources/xml/final.xml</argument> 
-					</request>
-					<header name="mime">text/xml</header>
-				</endpoint>
-				<endpoint>
-					<grammar>res:/ebay/pres/temp/items.html</grammar>
-					
-					
-					<request>
-						<identifier>res:/ebay/pres/categories</identifier>
-						</request>
-						
-				</endpoint>			
+				<basepath>/ebay/</basepath>
 			</config>
-			<space>
-				
-				<import>
-					<uri>urn:com:cognizant:nk:ebayapp:common</uri>
-				</import>				
-				
+			<space name="Inside Ebay App Core Space">
+				<mapper>
+					<config>
+						<endpoint>
+							<grammar>res:/ebay/login</grammar>
+							<request>
+								<identifier>active:groovy</identifier>
+								<argument name="operator">res:/resources/scripts/ebaylogin.gy
+								</argument>
+							</request>
+							<header name="mime">text/html</header>
+						</endpoint>
+						<endpoint>
+							<grammar>res:/ebay/logout</grammar>
+							<request>
+								<identifier>active:groovy</identifier>
+								<argument name="operator">res:/resources/scripts/ebaylogout.gy
+								</argument>
+							</request>
+							<header name="mime">text/html</header>
+						</endpoint>						
+						<endpoint>
+							<grammar>res:/ebay/pres/landingpage</grammar>
+							<request>
+								<identifier>active:groovy</identifier>
+								<argument name="operator">res:/resources/scripts/landingpage.gy
+								</argument>
+							</request>
+							<header name="mime">text/html</header>
+						</endpoint>
+						<endpoint>
+							<grammar>res:/ebay/pres/leftnav.html</grammar>
+							<request>
+								<identifier>active:xslt</identifier>
+								<argument name="operator">res:/resources/xml/leftnav.xsl
+								</argument>
+								<argument name="operand">res:/ebay/service/categories
+								</argument>
+							</request>
+							<header name="mime">text/html</header>
+						</endpoint>
+						<endpoint>
+							<grammar>res:/ebay/pres/category/items.html</grammar>
+							<request>
+								<identifier>active:xslt</identifier>
+								<argument name="operator">res:/resources/xml/rightpanel.xsl
+								</argument>
+								<argument name="operand">res:/ebay/service/category/items
+								</argument>
+							</request>
+							<header name="mime">text/html</header>
+						</endpoint>
+
+						<endpoint>
+							<grammar>res:/ebay/pres/final</grammar>
+							<request>
+								<identifier>active:xrl2</identifier>
+								<argument name="template">res:/resources/xml/GlobalTemplate.xml
+								</argument>
+								<argument name="content">res:/resources/xml/final.xml</argument>
+							</request>
+							<header name="mime">text/xml</header>
+						</endpoint>
+						<endpoint>
+							<grammar>res:/ebay/pres/temp/items.html</grammar>
+							<request>
+								<identifier>res:/ebay/pres/categories</identifier>
+							</request>
+						</endpoint>
+					</config>
+					<space>
+						<import>
+							<uri>urn:com:cognizant:nk:ebayapp:common</uri>
+						</import>
+					</space>
+				</mapper>
 			</space>
-		</mapper>
-		</space>
 		</overlay>
 		<import>
 			<private />
 			<uri>urn:com:cognizant:nk:ebayapp:common</uri>
 		</import>
-	</rootspace> 
-	<rootspace name="Ebay Authentication" uri="urn:com:cognizant:nk:ebayapp:security:impl" public="false">
+	</rootspace>
+	<rootspace name="Ebay Authentication" uri="urn:com:cognizant:nk:ebayapp:security:impl"
+		public="false">
 		<mapper>
-		<config>
-			<endpoint>
-				<name>GateKeeper Overlay</name>
-				<grammar>
-					<active>
-						<identifier>active:GateKeeper</identifier>
-						<argument name="request"/>
-					</active>
-				</grammar>
-				<request>
-					<identifier>active:groovy</identifier>
-					<argument name="operator">res:/resources/scripts/gatekeeper.gy</argument>
-					<argument name="request">arg:request</argument>
-				</request>
-			</endpoint>
-		</config>
-		<space>
-			<import>
-				<uri>urn:com:cognizant:nk:ebayapp:common</uri>
-			</import>
-		</space>
+			<config>
+				<endpoint>
+					<name>GateKeeper Overlay</name>
+					<grammar>
+						<active>
+							<identifier>active:GateKeeper</identifier>
+							<argument name="request" />
+						</active>
+					</grammar>
+					<request>
+						<identifier>active:groovy</identifier>
+						<argument name="operator">res:/resources/scripts/gatekeeper.gy
+						</argument>
+						<argument name="request">arg:request</argument>
+					</request>
+				</endpoint>
+			</config>
+			<space>
+				<import>
+					<uri>urn:com:cognizant:nk:ebayapp:common</uri>
+				</import>
+			</space>
 		</mapper>
 	</rootspace>
-	<rootspace name="Ebay App Common" uri="urn:com:cognizant:nk:ebayapp:common" public="false">
-				<fileset>
-					<private />
-					<regex>res:/resources/.*</regex>
-				</fileset>
-				<import>
-					<uri>urn:com:cognizant:nk:ebayapp:transform</uri>
-				</import>
-				<import>
-					<uri>urn:org:netkernel:client:http</uri>
-				</import>				
-				<import>
-					<uri>urn:org:netkernel:lang:groovy</uri>
-				</import>
-				<import>
-					<uri>urn:org:netkernel:ext:layer1</uri>
-				</import>
-				<import>
-					<uri>urn:org:netkernel:lang:xrl</uri>
-				</import>
-				<import>
-					<uri>urn:org:netkernel:xml:core</uri>
-				</import>
-				<import>
-					<uri>urn:org:netkernel:tpt:http</uri>
-				</import>				
-				<fileset>
-					<glob>etc/*</glob>
-				</fileset>
+	<rootspace name="Ebay App Common" uri="urn:com:cognizant:nk:ebayapp:common"
+		public="false">
+		<fileset>
+			<private />
+			<regex>res:/resources/.*</regex>
+		</fileset>
+		<import>
+			<uri>urn:com:cognizant:nk:ebayapp:transform</uri>
+		</import>
+		<import>
+			<uri>urn:org:netkernel:client:http</uri>
+		</import>
+		<import>
+			<uri>urn:org:netkernel:lang:groovy</uri>
+		</import>
+		<import>
+			<uri>urn:org:netkernel:ext:layer1</uri>
+		</import>
+		<import>
+			<uri>urn:org:netkernel:lang:xrl</uri>
+		</import>
+		<import>
+			<uri>urn:org:netkernel:xml:core</uri>
+		</import>
+		<import>
+			<uri>urn:org:netkernel:tpt:http</uri>
+		</import>
+		<fileset>
+			<glob>etc/*</glob>
+		</fileset>
 	</rootspace>
 </module>

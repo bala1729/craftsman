@@ -12,9 +12,39 @@ host = context.source("httpRequest:/remote-host")
 
 println("***** host ***** "+host)
 
-c = context.source("httpRequest:/cookie/ebay")
+cookieString = context.source("httpRequest:/cookie/ebay")
 
-println("ebay cookie "+c)
+println("ebay cookie "+cookieString.getName())
+println("cookie string "+cookieString.getValue())
+
+// parse the ebay cookie
+
+StringTokenizer cookieParser = new StringTokenizer(cookieString.getValue(), ";\n");
+
+StringBuffer nvp; 
+          String cname, cvalue;
+          int index;
+          Map<String, String> map = new HashMap<String, String>();
+          while(cookieParser.hasMoreTokens()) {
+                  nvp = new StringBuffer(cookieParser.nextToken());
+                  if(nvp.charAt(0) == ' ') {
+                    nvp = nvp.deleteCharAt(0);
+                  }
+                  index = nvp.indexOf("=");
+                  if(index == -1) {
+                    continue;
+                  }
+                  cname = nvp.substring(0, index);
+                  cvalue = nvp.substring(index+1);
+                  if ((cvalue != null)&& (cvalue.length()>0) && (cvalue.charAt(0)== '"') && (cvalue.length()>1) && (cvalue.endsWith("\""))) {
+                        cvalue = cvalue.substring(1, cvalue.length()-1);
+                  }
+                  if ((cvalue != null)&& (cvalue.length()>0)) {
+                        map.put(cname, cvalue);
+                        println("Key "+cname+" Value "+cvalue);
+                  }
+            }
+
 
 loginurl = "https://signin.sandbox.ebay.com/ws/eBayISAPI.dll?SignIn&runame="+runame+"&SessID="+sessionid
 

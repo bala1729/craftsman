@@ -1,5 +1,8 @@
 <div id="header">
 	<h1>eBay Prototype</h1>
+	<div id="logout">
+	<a style="color: red" href="http://nkapp.ebay.com:8080/ebay/logout">Logout</a>
+	</div>
 </div>
 
 

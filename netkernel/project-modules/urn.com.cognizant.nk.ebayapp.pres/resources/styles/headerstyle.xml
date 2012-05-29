@@ -1,4 +1,5 @@
 <STYLE type="text/css">
 	#header {background: 299bcd; width: 100%; height: 20%}
 	h1 {color: red;text-align: center}
+	#logout {color: red;text-align: right}
 </STYLE>

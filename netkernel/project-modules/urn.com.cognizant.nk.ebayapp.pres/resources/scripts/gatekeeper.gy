@@ -1,4 +1,8 @@
 println(" ************** Thru the Gatekeeper **************")
+cookieString = context.source("httpRequest:/cookie/ebay")
+
+println("ebay cookie "+cookieString.getName())
+println("cookie string "+cookieString.getValue())
 
 outerRequest=context.source("arg:request");
 println(" outer request "+outerRequest.getIdentifier())
@@ -13,7 +17,7 @@ if (sessionid!=null && username!=null) {
  context.sink("session:login", "true")
 
 }
-
+println("login already "+context.source("session:login"))
 innerRequest=null
 bypassValidation = false
 
