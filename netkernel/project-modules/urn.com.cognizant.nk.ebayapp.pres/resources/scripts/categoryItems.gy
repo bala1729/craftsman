@@ -1,0 +1,23 @@
+
+
+categoryId = context.source("httpRequest:/param/categoryId")
+println("Category id from http param "+categoryId)
+
+req = context.createRequest("active:categoryItemsService")
+req.addArgument("category",categoryId)
+
+rep = context.issueRequest(req)
+
+rep = context.createResponseFrom(rep)
+
+rep.setMimeType("application/xml")
+
+req = context.createRequest("active:xslt")
+req.addArgument("operator","res:/resources/xml/rightpanel.xsl")
+req.addArgument("operand","active:categoryItemsService+category@"+categoryId)
+
+rep = context.issueRequest(req)
+
+rep = context.createResponseFrom(rep)
+
+rep.setMimeType("text/html")

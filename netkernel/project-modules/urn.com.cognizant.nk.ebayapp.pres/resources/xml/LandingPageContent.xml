@@ -4,7 +4,11 @@
 		src="http://nkapp.ebay.com:8080/ebay/pres/leftnav.html"></iframe>
 	</div>
 	<div id="rightframe">
-	<iframe width="70%" height="70%"
-		src="http://nkapp.ebay.com:8080/ebay/pres/category/items.html"></iframe>
+	<!-- <iframe width="70%" height="70%"
+		src="http://nkapp.ebay.com:8080/ebay/pres/category/items.html?categoryId=20081"></iframe>  -->
+	 <xrl:include>
+	 	<xrl:identifier>res:/ebay/pres/landingpage/rightframe</xrl:identifier>
+	 	<xrl:argument name="category">arg:category</xrl:argument>
+	 </xrl:include>
 	</div>
 </div>

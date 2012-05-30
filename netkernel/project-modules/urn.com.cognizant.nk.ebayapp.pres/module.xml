@@ -77,8 +77,7 @@
 							<grammar>res:/ebay/pres/landingpage</grammar>
 							<request>
 								<identifier>active:groovy</identifier>
-								<argument name="operator">res:/resources/scripts/landingpage.gy
-								</argument>
+								<argument name="operator">res:/resources/scripts/landingpage.gy</argument>
 							</request>
 							<header name="mime">text/html</header>
 						</endpoint>
@@ -94,31 +93,16 @@
 							<header name="mime">text/html</header>
 						</endpoint>
 						<endpoint>
-							<grammar>res:/ebay/pres/category/items.html</grammar>
+							<grammar>
+							<active>
+								<identifier>res:/ebay/pres/landingpage/rightframe</identifier>
+								<argument name="category" />
+							</active>
+							</grammar>
 							<request>
-								<identifier>active:xslt</identifier>
-								<argument name="operator">res:/resources/xml/rightpanel.xsl
-								</argument>
-								<argument name="operand">res:/ebay/service/category/items
-								</argument>
-							</request>
-							<header name="mime">text/html</header>
-						</endpoint>
-
-						<endpoint>
-							<grammar>res:/ebay/pres/final</grammar>
-							<request>
-								<identifier>active:xrl2</identifier>
-								<argument name="template">res:/resources/xml/GlobalTemplate.xml
-								</argument>
-								<argument name="content">res:/resources/xml/final.xml</argument>
-							</request>
-							<header name="mime">text/xml</header>
-						</endpoint>
-						<endpoint>
-							<grammar>res:/ebay/pres/temp/items.html</grammar>
-							<request>
-								<identifier>res:/ebay/pres/categories</identifier>
+								<identifier>active:groovy</identifier>
+								<argument name="operator">res:/resources/scripts/itemlisturlstring.gy</argument>
+								<argument name="category">arg:category</argument>
 							</request>
 						</endpoint>
 					</config>

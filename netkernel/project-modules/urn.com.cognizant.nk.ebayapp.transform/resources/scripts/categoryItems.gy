@@ -1,0 +1,12 @@
+categoryId = context.getThisRequest().getArgumentValue("category")
+
+req = context.createRequest("active:xslt")
+
+req.addArgument("operator","res:/resources/xml/ItemTransform.xsl")
+req.addArgument("operand","active:categoryItemsData+category@"+categoryId)
+
+
+rep = context.issueRequest(req)
+
+rep=context.createResponseFrom(rep)
+rep.setMimeType("text/xml")

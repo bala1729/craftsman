@@ -1,6 +1,8 @@
+   categoryId = context.getThisRequest().getArgumentValue("category");
+   println("Fetching items for category "+categoryId)	
    req = context.createRequest("active:httpGet")
 	
-	req.addArgument("url", "http://svcs.sandbox.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.11.0&SECURITY-APPNAME=Cognizan-6f9d-488c-b526-5ca13e498447&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=20081&paginationInput.entriesPerPage=2");
+	req.addArgument("url", "http://svcs.sandbox.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.11.0&SECURITY-APPNAME=Cognizan-6f9d-488c-b526-5ca13e498447&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId="+categoryId+"&paginationInput.entriesPerPage=2");
 	rep=context.issueRequest(req)
 
 	rep = context.createResponseFrom(rep)

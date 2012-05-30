@@ -1,9 +1,10 @@
-
+categoryId = context.source("httpRequest:/param/categoryId")
 
 req = context.createRequest("active:xrl2")
 
 req.addArgument("template", "res:/resources/xml/GlobalTemplate.xml")
 req.addArgument("content", "res:/resources/xml/LandingPageContent.xml")
+req.addArgument("category", categoryId)
 
 rep = context.issueRequest(req)
 

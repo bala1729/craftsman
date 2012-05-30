@@ -1,0 +1,9 @@
+/*categoryId = context.source("httpRequest:/param/categoryId")
+println("categoryId in itemlisturlstring.gy "+categoryId)*/
+
+categoryId = context.getThisRequest().getArgumentValue("category")
+url = "http://nkapp.ebay.com:8080/ebay/pres/category/items.html?categoryId="+categoryId
+framestr = "<iframe width=\"70%\" height=\"70%\" src=\""+url+"\"></iframe>"
+
+
+rep = context.createResponseFrom(framestr)

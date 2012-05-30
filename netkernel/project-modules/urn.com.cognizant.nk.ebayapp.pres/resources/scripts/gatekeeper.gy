@@ -1,8 +1,4 @@
 println(" ************** Thru the Gatekeeper **************")
-cookieString = context.source("httpRequest:/cookie/ebay")
-
-println("ebay cookie "+cookieString.getName())
-println("cookie string "+cookieString.getValue())
 
 outerRequest=context.source("arg:request");
 println(" outer request "+outerRequest.getIdentifier())
@@ -31,7 +27,8 @@ if (bypassValidation) {
 	innerRequest=outerRequest.getIssuableClone();
 } else {
 	//Not logged in?
-	innerRequest=context.createRequest("res:/ebay/login");		//Route them to the login resource	
+	//return to the login resource	
+	innerRequest=context.createRequest("res:/ebay/login");		
 }
 
 context.createResponseFrom(innerRequest);

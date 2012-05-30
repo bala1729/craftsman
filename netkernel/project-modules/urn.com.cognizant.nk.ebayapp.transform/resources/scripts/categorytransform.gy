@@ -9,7 +9,3 @@ rep = context.issueRequest(req)
 
 rep=context.createResponseFrom(rep)
 rep.setMimeType("text/xml")
-
-/*rep = context.createRequest("res:/resources/xml/CategoryResource.xml")
-rep= context.
-rep.setMimeType("text/xml")*/
