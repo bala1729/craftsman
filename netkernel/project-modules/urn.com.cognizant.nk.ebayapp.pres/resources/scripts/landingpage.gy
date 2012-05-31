@@ -1,5 +1,9 @@
 categoryId = context.source("httpRequest:/param/categoryId")
 
+if (categoryId == null) {
+	categoryId = "20081"
+}
+
 req = context.createRequest("active:xrl2")
 
 req.addArgument("template", "res:/resources/xml/GlobalTemplate.xml")

@@ -1,0 +1,15 @@
+req = context.createRequest("active:xslt")
+
+req.addArgument("operator","res:/resources/xml/CategoryTransform.xsl")
+req.addArgument("operand","res:/ebay/data/categories")
+
+
+rep = context.issueRequest(req)
+
+req = context.createRequest("active:attachGoldenThread")
+req.addArgument("id","categorycache")
+
+context.issueRequest(req)
+
+rep=context.createResponseFrom(rep)
+rep.setMimeType("application/xml")

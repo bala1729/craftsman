@@ -1,0 +1,23 @@
+
+username = context.source("httpRequest:/param/username")
+println(" username "+username)
+
+sessionid = context.source("session:id")
+
+// user name and session id will exist while coming from login page
+if (sessionid!=null && username!=null) {
+ // coming thru the login, sink the login as true in session
+ context.sink("session:login", "true")
+
+}
+
+// move to landing page
+
+url = "http://nkapp.ebay.com:8080/ebay/pres/landingpage?categoryId=20081"
+
+req=context.createRequest("active:httpGet")
+req.addArgument("url", url)
+
+rep=context.issueRequest(req)
+
+rep = context.createResponseFrom(rep)

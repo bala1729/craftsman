@@ -18,11 +18,9 @@
 				<endpoint>
 					<grammar>res:/ebay/service/categories</grammar>
 					<request>
-						<identifier>active:xslt</identifier>
-						<argument name="operator">res:/resources/xml/CategoryTransform.xsl</argument>
-						<argument name="operand">res:/ebay/data/categories</argument> 
+						<identifier>active:groovy</identifier>
+						<argument name="operator">res:/resources/scripts/categories.gy</argument>
 					</request>
-					<header name="mime">application/xml</header>
 				</endpoint>
 				<endpoint>
 					<grammar>
