@@ -14,4 +14,5 @@ req = context.createRequest("active:wsSOAPClient")
 	
 	rep = context.createResponseFrom(rep)
 	rep.setMimeType("text/xml")
+	rep.setExpiry(rep.EXPIRY_CONSTANT, System.currentTimeMillis()+60000)
 

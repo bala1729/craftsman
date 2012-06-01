@@ -91,7 +91,7 @@
 								</argument>
 							</request>
 							<header name="mime">text/html</header>
-							<header name="httpResponse:/header/Expires">0</header>
+							
 						</endpoint>
 						<endpoint>
 							<grammar>
