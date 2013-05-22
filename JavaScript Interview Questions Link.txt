@@ -1,0 +1,13 @@
+http://news.dice.com/2012/09/26/javascript-interview-questions/
+
+http://doppnet.com/2011/10/10-advanced-javascript-interview-questions/
+
+http://doppnet.com/2012/07/the-quirks-of-javascript/
+
+http://stackoverflow.com/questions/2492123/pro-javascript-programmer-interview-questions-with-answers
+
+http://o2js.com/interview-questions/assets/javascript-interview-questions.pdf
+
+https://github.com/darcyclarke/Front-end-Developer-Interview-Questions
+
+http://vikasrao.wordpress.com/2010/02/07/common-javascript-interview-questions/
