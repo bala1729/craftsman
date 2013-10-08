@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 # This is support material for the course "Learning from Data" on edX.org
 # https://www.edx.org/course/caltechx/cs1156x/learning-data/1120
 #
