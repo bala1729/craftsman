@@ -1,4 +1,4 @@
-#!/Users/banarayanaswamy/.rvm/bin/ruby-2.0.0-p247
+#!/usr/bin/ruby
 # This is support material for the course "Learning from Data" on edX.org
 # https://www.edx.org/course/caltechx/cs1156x/learning-data/1120
 #
